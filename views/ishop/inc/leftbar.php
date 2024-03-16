@@ -1,9 +1,9 @@
 <div id="left-bar">
 		<div class="left-bar-cont">
 			<h2><span>Каталог</span></h2>
-			<h3 class="nav-new"><a href="#">Новинки</a></h3>
-			<h3 class="nav-lider"><a href="#">Лидеры продаж</a></h3>
-			<h3 class="nav-sale"><a href="#">Распродажа</a></h3>
+			<h3 class="nav-new"><a href="?view=new">Новинки</a></h3>
+			<h3 class="nav-lider"><a href="?view=hits">Лидеры продаж</a></h3>
+			<h3 class="nav-sale"><a href="?view=sale">Распродажа</a></h3>
 			
 			<h4><span>- Мобильные телефоны</span></h4>
 			<ul class="nav-catalog">
