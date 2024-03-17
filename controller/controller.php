@@ -11,6 +11,9 @@ require_once 'functions/functions.php';
 // получение массива каталога
 $cat = catalog();
 
+// получение массива информеров
+$informers = informer();
+
 // получение динамичной части шаблона #content
 $view = empty($_GET['view']) ? 'hits' : $_GET['view'];
 
