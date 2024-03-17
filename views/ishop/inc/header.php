@@ -10,7 +10,10 @@
 <script type="text/javascript" src="<?=TEMPLATE?>js/jquery.cookie.js"> </script>
 <script type="text/javascript" src="<?=TEMPLATE?>js/workscripts.js"></script>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 55450a303224c5b153d0d12f1fd819fd91093d9f
 <!--[if lt IE 9]>
 <script src="<?=TEMPLATE?>http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 <![endif]-->

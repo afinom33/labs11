@@ -1,7 +1,7 @@
 <?php require_once 'inc/header.php' ?>
 	<div id="contentwrapper">
 		<div id="content">
-			<?php include $view. '.php' ?>
+		    <?php include $view. '.php' ?>
 		</div>
 	</div>		
         <?php require_once 'inc/leftbar.php' ?>

@@ -6,6 +6,7 @@
 			<h3 class="nav-sale"><a href="?view=sale">Распродажа</a></h3>
 			
 			<h4><span>- Мобильные телефоны</span></h4>
+<<<<<<< HEAD
 
 			<ul class="nav-catalog" id="accordion">
 			<?php foreach($cat as $key => $item): ?>
@@ -21,6 +22,22 @@
 						<li><a href="?view=cat&category=<?=$key?>"><?=$item[0]?></a></li>
 					<?php endif; ?>
                     <?php endforeach; ?>
+=======
+			<ul class="nav-catalog" id="accordion">
+            <?php foreach ($cat as $key => $item): ?>
+                <?php if (count($item) > 1): // если это родительская категория ?>
+                    <h3><li><a href="#"><?=$item[0]?></a></li></h3>
+                    <ul>
+                        <li> <a href="?view=cat&category=<?=$key?>">Все модели</a></li>
+                        <?php foreach ($item['sub'] as $key => $sub): ?>
+                            <li> <a href="?view=cat&category=<?=$key?>"><?=$sub?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php elseif($item[0]): // если самостоятельная категория ?>
+                    <li><a href="?view=cat&category=<?=$key?>"><?=$item[0]?></a></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+>>>>>>> 55450a303224c5b153d0d12f1fd819fd91093d9f
 				<!-- <li><a href="#">Alcatel</a></li>
 				<li><a href="#">Ericsson</a></li>
 				<li><a href="#">LG</a>
