@@ -1,5 +1,7 @@
 <?php defined('ISHOP') or die('Access denied'); ?>
 <div class="catalog-index">
+
+	<?php print_arr($cat); ?>
 				<h1> Лидеры продаж </h1>
 				<div class="product-index">
 				

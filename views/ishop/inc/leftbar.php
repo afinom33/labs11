@@ -6,8 +6,22 @@
 			<h3 class="nav-sale"><a href="?view=sale">Распродажа</a></h3>
 			
 			<h4><span>- Мобильные телефоны</span></h4>
-			<ul class="nav-catalog">
-				<li><a href="#">Alcatel</a></li>
+
+			<ul class="nav-catalog" id="accordion">
+			<?php foreach($cat as $key => $item): ?>
+					<?php if(count($item) > 1): // если это родительская категория ?>
+					<h3><li><a href="#"><?=$item[0]?></a></li></h3>
+						<ul>
+							<li>- <a href="?view=cat&category=<?=$key?>">Все модели</a></li>
+							<?php foreach($item['sub'] as $key => $sub): ?>
+							<li>- <a href="?view=cat&category=<?=$key?>"><?=$sub?></a></li>
+							<?php endforeach; ?>
+						</ul>
+					<?php elseif($item[0]): // если самостоятельная категория ?>
+						<li><a href="?view=cat&category=<?=$key?>"><?=$item[0]?></a></li>
+					<?php endif; ?>
+                    <?php endforeach; ?>
+				<!-- <li><a href="#">Alcatel</a></li>
 				<li><a href="#">Ericsson</a></li>
 				<li><a href="#">LG</a>
 					<ul>
@@ -22,7 +36,7 @@
 				<li><a href="#">NEC</a></li>
 				<li><a href="#">Nokia</a></li>
 				<li><a href="#">Panasonic</a></li>
-				<li><a href="#">Ericsson</a></li>
+				<li><a href="#">Ericsson</a></li> -->
 			</ul>
 			<div class="bar-contact">
 				<h3>Контакты:</h3>
