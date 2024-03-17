@@ -62,3 +62,21 @@ function eyestopper($eyestopper){
     return $eyestoppers;
 }
 /* ===Айстопперы - новинки, лидеры продаж, распродажа=== */ 
+
+ /* ===Получение массива товаров по категории=== */
+	function products($category){
+	$link = mysqli_connect(HOST, USER, PASS, DB) or die('No connect to Server');
+    $query = "(SELECT goods_id, name, img, description, price, hits, new, sale
+                 FROM goods WHERE goods_brandid = $category AND visible='1')
+        UNION  (SELECT goods_id, name, img, description, price, hits, new, sale FROM goods
+           WHERE goods_brandid IN ( SELECT brand_id FROM brands WHERE parent_id = $category) 
+		   AND visible='1')";
+    $res = mysqli_query($link,$query) or die(mysqli_error());
+    
+    $products = array();
+    while($row = mysqli_fetch_assoc($res)){
+        $products[] = $row;
+    }
+	return $products;
+	}
+/* ===Получение массива товаров по категории=== */ 
