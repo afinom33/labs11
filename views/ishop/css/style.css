@@ -640,3 +640,8 @@ body{
 		font-size:12px; font-weight:normal; padding:0 20px; 
 		}	
 	
+.no_product{
+	font-size: 14px;
+	text-align: center;
+	padding: 20px;
+}

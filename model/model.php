@@ -47,3 +47,18 @@ function informer(){
     return $informers;
     }
 /* ===Информеры - получение массива=== */
+
+ /* ===Айстопперы - новинки, лидеры продаж, распродажа=== */
+function eyestopper($eyestopper){
+    $link = mysqli_connect(HOST, USER, PASS, DB) or die('No connect to Server');
+	$query = "SELECT goods_id, name, img, price FROM goods
+                WHERE visible='1' AND $eyestopper='1'";
+    $res = mysqli_query($link,$query) or die(mysqli_error());
+    
+    $eyestoppers = array();
+    while($row = mysqli_fetch_assoc($res)){
+        $eyestoppers[] = $row;
+    }
+    return $eyestoppers;
+}
+/* ===Айстопперы - новинки, лидеры продаж, распродажа=== */ 
