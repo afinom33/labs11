@@ -21,4 +21,23 @@ $(document).ready(function(){
 	});
     /* ===Аккордеон=== */
     
+  /* ===Переключатель вида=== */
+    if($.cookie("display") == null){
+        $.cookie("display", "grid");
+    }
+    $(".grid_list").click(function(){
+    var display = $(this).attr("id"); // получаем значение переключателя вида
+    display = (display == "grid") ? "grid" : "list"; // допустимые значения
+    if(display == $.cookie("display")){
+    // если значение совпадает с кукой - ничего не делаем
+        return false;   
+    } else{
+            // иначе - установим куку с новым значением вида
+            $.cookie("display", display);
+            window.location = "?" + query;
+            return false;
+        }
+    });
+    /* ===Переключатель вида=== */
+ 
 });

@@ -9,7 +9,28 @@
 <script type="text/javascript" src="<?=TEMPLATE?>js/jquery-ui-1.8.22.custom.min.js"></script>
 <script type="text/javascript" src="<?=TEMPLATE?>js/jquery.cookie.js"> </script>
 <script type="text/javascript" src="<?=TEMPLATE?>js/workscripts.js"></script>
+<script type="text/javascript">var query = '<?=$_SERVER['QUERY_STRING']?>';</script>
 
+<script type="text/javascript">
+	$(document).ready(function(){	
+	if ($.cookie("display") == null){
+		$.cookie("display", "grid");
+	}
+$(".grid_list").click(function(){
+	var display = $(this).attr("id");
+	display = (display == "grid") ? "grid" : "list";
+	if (display == $.cookie("display")) {
+		return false;
+	}
+	else{
+	$.cookie("display", display);
+	window.location = "?<?=$_SERVER['QUERY_STRING']?>";
+		return false;
+	}
+	return false;
+});
+});
+</script>
 <!--[if lt IE 9]>
 <script src="<?=TEMPLATE?>http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 <![endif]-->
