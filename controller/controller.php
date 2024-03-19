@@ -21,7 +21,7 @@ switch($view){
     case('hits'):
         // лидеры продаж
         $eyestoppers = eyestopper('hits');
-    break;
+     break;
     
     case('new'):
         // новинки
@@ -36,7 +36,23 @@ switch($view){
 	case('cat'):
         // товары категории
         $category = abs((int)$_GET['category']);
-        $products = products($category); // получаем массив из модели
+        
+
+        $parpage = 12;
+        if(isset($_GET['page'])){
+            $page = (int)$_GET['page'];
+            if($page < 1) $page = 1;
+        }else{
+            $page = 1;
+        }
+
+        $count_rows = count_rows($category);
+        $pages_count = ceil($count_rows / $perpage);
+        if(!$pages_count) $pages_count = 1;
+        if($page > $pages_count) $page = $pages_count;
+        $start_pos = ($page - 1) * $perpage;
+
+        $products = products($category, $start_pos, $perpage); // получаем массив из модели
     break;
 	
     default:

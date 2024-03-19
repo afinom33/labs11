@@ -63,14 +63,32 @@ function eyestopper($eyestopper){
 }
 /* ===Айстопперы - новинки, лидеры продаж, распродажа=== */ 
 
+function count_rows($category) {
+    $link = mysqli_connect(HOST, USER, PASS, DB) or die('No connect to Server');
+    $query = "(SELECT COUNT(goods_id) as count_rows
+               FROM goods
+               WHERE goods_brandid = $category AND visible='1')
+              UNION
+              (SELECT COUNT(goods_id) as count_rows
+               FROM goods
+               WHERE goods_brandid IN 
+                 (SELECT brand_id FROM brands WHERE parent_id = $category AND visible='1'))";
+    $res = mysqli_query($link, $query) or die(mysqli_error());
+    
+    while($row = mysqli_fetch_assoc($res)) {
+        if($row['count_rows']) $count_rows = $row['count_rows'];
+    }
+    
+    return $count_rows;
+}
  /* ===Получение массива товаров по категории=== */
-	function products($category){
+	function products($category, $start_pos, $perpage){
 	$link = mysqli_connect(HOST, USER, PASS, DB) or die('No connect to Server');
     $query = "(SELECT goods_id, name, img, description, price, hits, new, sale
                  FROM goods WHERE goods_brandid = $category AND visible='1')
         UNION  (SELECT goods_id, name, img, description, price, hits, new, sale FROM goods
            WHERE goods_brandid IN ( SELECT brand_id FROM brands WHERE parent_id = $category) 
-		   AND visible='1')";
+		   AND visible='1') LIMIT $start_pos, $perpage";
     $res = mysqli_query($link,$query) or die(mysqli_error());
     
     $products = array();

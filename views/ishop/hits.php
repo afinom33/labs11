@@ -19,4 +19,4 @@
     <p style="padding: 20px; font-size: 18px;text-align: center;">Хитов продаж уже нет!</p>
 	<?php endif; ?>	
 				
-			</div>
+</div>
