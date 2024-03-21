@@ -49,10 +49,10 @@ function informer(){
 /* ===Информеры - получение массива=== */
 
  /* ===Айстопперы - новинки, лидеры продаж, распродажа=== */
-function eyestopper($eyestopper){
+ function eyestopper($eyestopper, $start_pos = 0, $perpage = 0) {
     $link = mysqli_connect(HOST, USER, PASS, DB) or die('No connect to Server');
 	$query = "SELECT goods_id, name, img, price FROM goods
-                WHERE visible='1' AND $eyestopper='1'";
+                WHERE visible='1' AND $eyestopper='1' LIMIT $start_pos, $perpage";
     $res = mysqli_query($link,$query) or die(mysqli_error());
     
     $eyestoppers = array();
@@ -89,7 +89,7 @@ function count_rows($category) {
         UNION  (SELECT goods_id, name, img, description, price, hits, new, sale FROM goods
            WHERE goods_brandid IN ( SELECT brand_id FROM brands WHERE parent_id = $category) 
 		   AND visible='1') LIMIT $start_pos, $perpage";
-    $res = mysqli_query($link,$query) or die(mysqli_error());
+    $res = mysqli_query($link, $query) or die(mysqli_error());
     
     $products = array();
     while($row = mysqli_fetch_assoc($res)){

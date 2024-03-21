@@ -18,5 +18,9 @@
     <?php else: ?>
     <p style="padding: 20px; font-size: 18px;text-align: center;">Распродажи пока нет!</p>
 	<?php endif; ?>	
-				
+    <div class="clr"></div>
+	<?php if($pages_count > 1): pagination($page, $pages_count); ?>
+	<?php else: // если товаров нет?> 
+    <p>Здесь товаров пока нет!</p>
+	<?php endif; // конец условия наличия товаров?>
 </div>
